@@ -3,6 +3,8 @@
 
 void NullElements()
 {
+    // Задача 1
+
     printf("%s\n", "Enter the array size (<= 100):");
 
     const int lengthArrayNumbers;
@@ -26,12 +28,37 @@ void NullElements()
     printf("%d\n", nullCounter);
 }
 
+void Swap() 
+{
+    // Задача 2
+
+    int first = 0;
+    int second = 0;
+
+    int* left = &first;
+    int* right = &second;
+
+    printf("%s\n", "Enter first number:");
+    scanf_s("%d", &first);
+
+    printf("%s\n", "Enter second number:");
+    scanf_s("%d", &second);
+
+    *left ^= *right;
+    *right ^= *left;
+    *left ^= *right;
+
+    printf("First number: %d ; Second number: %d", first, second);
+}
+
 
 int main(void)
 {
+    int taskNumber = -1;
+
     printf("%s\n", "Enter task number:");
-    const int taskNumber = scanf_s("%d", &taskNumber);
+    scanf_s("%d", &taskNumber);
 
     if (taskNumber == 1)  NullElements();
- 
+    if (taskNumber == 2)  Swap();
 }
