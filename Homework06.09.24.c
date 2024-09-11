@@ -51,8 +51,6 @@ void Swap()
     printf("First number: %d ; Second number: %d", first, second);
 }
 
-
-
 void IncompleteQuotient()
 {
     // Задача 3
@@ -105,6 +103,31 @@ void IncompleteQuotient()
     printf("Answer: %d", answer);
 }
 
+void LuckyTickets()
+{
+    // Задача 4
+
+    int amounts[28] = {0};
+    int answer = 0;
+
+    for (int number = 0; number < 1000; number++)
+    {
+        int hundreds = number / 100;
+        int units = number % 10;
+        int tens = (number - (100 * hundreds) - units) / 10;
+        int sum = hundreds + tens + units;
+
+        amounts[sum] += 1;
+    }
+
+    for (int i = 0; i < 28; i++)
+    {
+        amounts[i] *= amounts[i];
+        answer += amounts[i];
+    }
+    printf("%d", answer);
+}
+
 int main(void)
 {
     int taskNumber = -1;
@@ -115,4 +138,5 @@ int main(void)
     if (taskNumber == 1)  NullElements();
     if (taskNumber == 2)  Swap();
     if (taskNumber == 3)  IncompleteQuotient();
+    if (taskNumber == 4)  LuckyTickets();
 }
