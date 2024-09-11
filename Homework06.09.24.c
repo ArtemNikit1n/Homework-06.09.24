@@ -52,6 +52,59 @@ void Swap()
 }
 
 
+
+void IncompleteQuotient()
+{
+    // Задача 3
+
+    int a = 0;
+    int b = 0;
+    int answer = 0;
+
+    printf("%s\n", "Enter a: ");
+    scanf_s("%d", &a);
+
+    printf("%s\n", "Enter b:");
+    scanf_s("%d", &b);
+
+    if (b != 0) {
+        if (a >= 0 && b > 0) {
+            while (a >= b) {
+                a -= b;
+                answer += 1;
+            }
+        }
+        if (a < 0 && b > 0) {
+            answer -= 1;
+            while (a <= -b) {
+                a += b;
+                answer -= 1;
+            }
+            if (a == 0)
+                answer += 1;
+        }
+        if (a > 0 && b < 0) {
+            while (a >= -b) {
+                a += b;
+                answer -= 1;
+            }
+        }
+        if (a < 0 && b < 0) {
+            answer += 1;
+            while (a <= b) {
+                a -= b;
+                answer += 1;
+            }
+            if (a == 0)
+                answer -= 1;
+        }
+    }
+    else
+        printf("%s\n", "You can't divide by zero!");
+
+    printf("Answer: %d", answer);
+}
+
 int main(void)
 {
     int taskNumber = -1;
@@ -61,4 +114,5 @@ int main(void)
 
     if (taskNumber == 1)  NullElements();
     if (taskNumber == 2)  Swap();
+    if (taskNumber == 3)  IncompleteQuotient();
 }
