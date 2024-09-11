@@ -134,10 +134,10 @@ void LuckyTickets()
 
 // ********
 
-int prime(int num)
+int prime(int number)
 {
-    for (int div = 2; div <= (int)ceil(sqrt(num)); div++) {
-        if (num % div == 0)
+    for (int div = 2; div <= (int)ceil(sqrt(number)); div++) {
+        if (number % div == 0)
             return 0;
     }
     return 1;
@@ -147,11 +147,11 @@ void PrimeNumbers()
 {
     // Задача 6
 
-    int num;
+    int number;
     printf("%s\n", "Enter number:");
-    scanf_s("%d", &num);
+    scanf_s("%d", &number);
 
-    for (int i = 1; i <= num; i++) {
+    for (int i = 1; i <= number; i++) {
         if (prime(i) == 1) printf("%d ", i);
     }
 }
