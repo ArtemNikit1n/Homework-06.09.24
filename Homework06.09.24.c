@@ -1,36 +1,30 @@
 ﻿#include <stdio.h>
-#include <math.h>
+#include <stdbool.h>
 
 void NullElements()
 {
     // Задача 1
 
-    printf("%s\n", "Enter the array size (<= 100):");
-
-    const int lengthArrayNumbers;
-    scanf_s("%d", &lengthArrayNumbers);
-
-    if (lengthArrayNumbers > 100) {
-        printf("%s\n", "The array size exceeds the allowed limit.");
-        return 1;
-    }
-
-    printf("%s\n", "Enter the numbers of the array:");
-
+    int lengthArrayNumbers = 0;
     int arrayNumbers[100];
     int nullCounter = 0;
 
-    for (int i = 0; i < lengthArrayNumbers; ++i) {
-        scanf_s("%d", &arrayNumbers[i]);
-        if (arrayNumbers[i] == 0) nullCounter += 1;
-    }
+    printf("%s\n", "Enter the array size (<= 100):");
+    scanf("%d", &lengthArrayNumbers);
+    printf("%s\n", "Enter the numbers of the array:");
 
-    printf("%d\n", nullCounter);
+    for (int i = 0; i <= lengthArrayNumbers; ++i) {
+        scanf("%d", &arrayNumbers[i]);
+        if (arrayNumbers[i] == 0) {
+            nullCounter += 1;
+        }
+    }
+    printf("Number of zeros = %d\n", nullCounter);
 }
 
 // ********
 
-void Swap() 
+void Swap()
 {
     // Задача 2
 
@@ -41,10 +35,10 @@ void Swap()
     int* right = &second;
 
     printf("%s\n", "Enter first number:");
-    scanf_s("%d", &first);
+    scanf("%d", &first);
 
     printf("%s\n", "Enter second number:");
-    scanf_s("%d", &second);
+    scanf("%d", &second);
 
     *left ^= *right;
     *right ^= *left;
@@ -64,10 +58,10 @@ void IncompleteQuotient()
     int answer = 0;
 
     printf("%s\n", "Enter a: ");
-    scanf_s("%d", &a);
+    scanf("%d", &a);
 
     printf("%s\n", "Enter b:");
-    scanf_s("%d", &b);
+    scanf("%d", &b);
 
     if (b != 0) {
         if (a >= 0 && b > 0) {
@@ -100,11 +94,10 @@ void IncompleteQuotient()
             if (a == 0)
                 answer -= 1;
         }
+        printf("Answer: %d", answer);
     }
     else
         printf("%s\n", "You can't divide by zero!");
-
-    printf("Answer: %d", answer);
 }
 
 // ********
@@ -134,11 +127,39 @@ void LuckyTickets()
 
 // ********
 
-int prime(int number)
+void BalanceOfBrackets()
 {
-    for (int div = 2; div <= (int)ceil(sqrt(number)); div++) {
+    // Задача 5
+
+    char string[100];
+    int balance = 0;
+    bool answer = 0;
+
+    printf("%s\n", "Enter a string with brackets:");
+    scanf("%s", string);
+
+    for (int i = 0; i < 100; i++) {
+        if (string[i] == '(') balance += 1;
+        if (string[i] == ')') balance -= 1;
+        else continue;
+    }
+
+    if (balance == 0) {
+        answer = 1;
+    }
+    printf("Result: %d \n1 - means the brackets balance is satisfied"
+           "\n0 - means it is not satisfied", answer);
+}
+
+// ********
+
+int IsItPrime(int number)
+{
+    int div = 2;
+    while (div * div <= number) {
         if (number % div == 0)
             return 0;
+        div += 1;
     }
     return 1;
 }
@@ -147,13 +168,54 @@ void PrimeNumbers()
 {
     // Задача 6
 
-    int number;
-    printf("%s\n", "Enter number:");
-    scanf_s("%d", &number);
+    int number = 0;
 
-    for (int i = 1; i <= number; i++) {
-        if (prime(i) == 1) printf("%d ", i);
+    printf("%s\n", "Enter number:");
+    scanf("%d", &number);
+
+    for (int i = 2; i <= number; i++) {
+        if (IsItPrime(i)) {
+            printf("%d ", i);
+        }
     }
+}
+
+// ********
+
+void Substring()
+{
+    // Задача 7
+
+    char s[100];
+    char s1[100];
+    int occurrenceCounter = 0;
+
+    printf("%s\n", "Enter S (<100):");
+    scanf("%s", s);
+
+    printf("%s\n", "Enter S1 (<100):");
+    scanf("%s", s1);
+
+    int i = 0;
+    int j = 0;
+
+    while (s[i] != '\0') {
+        if (s[i] == s1[0]) {
+            bool symbolsAreEqual = 1;
+            while (s1[j] != '\0') {
+                if (s[i + j] != s1[j]) {
+                    symbolsAreEqual = 0;
+                    break;
+                }
+                ++j;
+            }
+            if (symbolsAreEqual) {
+                ++occurrenceCounter;
+            }
+        }
+        ++i;
+    }
+    printf("Number of occurrences of the substring: %d", occurrenceCounter);
 }
 
 // ********
@@ -163,14 +225,30 @@ int main(void)
     int taskNumber = -1;
 
     printf("%s\n", "Enter task number:");
-    scanf_s("%d", &taskNumber);
+    scanf("%d", &taskNumber);
 
-    if (taskNumber == 1)  NullElements();
-    if (taskNumber == 2)  Swap();
-    if (taskNumber == 3)  IncompleteQuotient();
-    if (taskNumber == 4)  LuckyTickets();
-    if (taskNumber == 5)  printf("%s\n", "Not ready");
-    if (taskNumber == 6)  PrimeNumbers();
-    if (taskNumber == 7)  printf("%s\n", "Not ready");
-    if (taskNumber == 8)  printf("%s\n", "Not ready");
+    if (taskNumber == 1) {
+        NullElements();
+    }
+    if (taskNumber == 2) {
+        Swap();
+    }
+    if (taskNumber == 3) {
+        IncompleteQuotient();
+    }
+    if (taskNumber == 4) {
+        LuckyTickets();
+    }
+    if (taskNumber == 5) {
+        BalanceOfBrackets();
+    }
+    if (taskNumber == 6) {
+        PrimeNumbers();
+    }
+    if (taskNumber == 7) {
+        Substring();
+    }
+    if (taskNumber == 8) {
+        printf("%s\n", "Not ready");
+    }
 }

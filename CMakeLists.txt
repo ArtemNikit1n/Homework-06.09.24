@@ -4,4 +4,6 @@ project(CLionProjects C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(CLionProjects main.c
+        Homework06.09.24.c
+        main.c
 )
