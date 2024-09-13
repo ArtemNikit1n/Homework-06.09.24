@@ -49,12 +49,6 @@ cmake_ninja_workdir = D$:/Development/Homeworks/Homework-06.09.24/cmake-build-de
 
 build cmake_object_order_depends_target_CLionProjects: phony || .
 
-build CMakeFiles/CLionProjects.dir/main.c.obj: C_COMPILER__CLionProjects_unscanned_Debug D$:/Development/Homeworks/Homework-06.09.24/main.c || cmake_object_order_depends_target_CLionProjects
-  DEP_FILE = CMakeFiles\CLionProjects.dir\main.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\CLionProjects.dir
-  OBJECT_FILE_DIR = CMakeFiles\CLionProjects.dir
-
 build CMakeFiles/CLionProjects.dir/Homework06.09.24.c.obj: C_COMPILER__CLionProjects_unscanned_Debug D$:/Development/Homeworks/Homework-06.09.24/Homework06.09.24.c || cmake_object_order_depends_target_CLionProjects
   DEP_FILE = CMakeFiles\CLionProjects.dir\Homework06.09.24.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
@@ -69,7 +63,7 @@ build CMakeFiles/CLionProjects.dir/Homework06.09.24.c.obj: C_COMPILER__CLionProj
 #############################################
 # Link the executable CLionProjects.exe
 
-build CLionProjects.exe: C_EXECUTABLE_LINKER__CLionProjects_Debug CMakeFiles/CLionProjects.dir/main.c.obj CMakeFiles/CLionProjects.dir/Homework06.09.24.c.obj
+build CLionProjects.exe: C_EXECUTABLE_LINKER__CLionProjects_Debug CMakeFiles/CLionProjects.dir/Homework06.09.24.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\CLionProjects.dir
