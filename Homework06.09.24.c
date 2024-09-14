@@ -2,22 +2,32 @@
 #include <stdbool.h>
 #include <math.h>
 
-void NullElements()
+int ArrayInput(int arrayNumbers[100])
 {
-    // Задача 1
-
     int lengthArrayNumbers = 0;
-    int arrayNumbers[100];
-    int nullCounter = 0;
 
     printf("%s\n", "Enter the array size (<= 100):");
     scanf("%d", &lengthArrayNumbers);
     printf("%s\n", "Enter the numbers of the array:");
 
-    for (int i = 0; i <= lengthArrayNumbers; ++i) {
+    for (int i = 0; i < lengthArrayNumbers; ++i) {
         scanf("%d", &arrayNumbers[i]);
+    }
+    return lengthArrayNumbers;
+}
+
+void NullElements()
+{
+    // Задача 1
+
+    int arrayNumbers[100];
+    int nullCounter = 0;
+    int lengthArrayNumbers = ArrayInput(arrayNumbers);
+
+    for (int i = 0; i < lengthArrayNumbers; ++i) {
+        printf("%d ", arrayNumbers[i]);
         if (arrayNumbers[i] == 0) {
-            nullCounter += 1;
+            ++nullCounter;
         }
     }
     printf("Number of zeros = %d\n", nullCounter);
@@ -25,7 +35,14 @@ void NullElements()
 
 // ********
 
-void Swap()
+void Swap(int *first, int *second)
+{
+    *first ^= *second;
+    *second ^= *first;
+    *first ^= *second;
+}
+
+void Task2Swap()
 {
     // Задача 2
 
@@ -38,14 +55,13 @@ void Swap()
     printf("%s\n", "Enter second number:");
     scanf("%d", &second);
 
-    first ^= second;
-    second ^= first;
-    first ^= second;
+    Swap(&first, &second);
 
     printf("First number: %d ; Second number: %d", first, second);
 }
 
 // ********
+
 int Division(const int a, const int b)
 {
     int modulA = abs(a);
@@ -225,6 +241,36 @@ void Substring()
 
 // ********
 
+void ArrayReversal(int arrayNumbers[100], const int lengthArrayNumbers)
+{
+    int middleOfTheArray = (int)(lengthArrayNumbers / 2);
+
+    for (int i = 0; i <= middleOfTheArray - 1; ++i) {
+        Swap(&arrayNumbers[i], &arrayNumbers[lengthArrayNumbers - 1 - i]);
+    }
+}
+
+void Array()
+{
+    // Задача 8
+
+    int arrayNumbers[100];
+    int separator = 0;
+    int lengthArrayNumbers = ArrayInput(arrayNumbers);
+
+    printf("%s\n", "Enter m:");
+    scanf("%d", &separator);
+
+    ArrayReversal(arrayNumbers, separator);
+    ArrayReversal(arrayNumbers, lengthArrayNumbers);
+    ArrayReversal(arrayNumbers, lengthArrayNumbers - separator);
+    for (int i = 0; i < lengthArrayNumbers; ++i) {
+        printf("%d, ", arrayNumbers[i]);
+    }
+}
+
+// ********
+
 int main(void)
 {
     int taskNumber = -1;
@@ -236,7 +282,7 @@ int main(void)
         NullElements();
     }
     if (taskNumber == 2) {
-        Swap();
+        Task2Swap();
     }
     if (taskNumber == 3) {
         IncompleteQuotient();
@@ -254,6 +300,6 @@ int main(void)
         Substring();
     }
     if (taskNumber == 8) {
-        printf("%s\n", "Not ready");
+        Array();
     }
 }
