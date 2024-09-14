@@ -1,5 +1,6 @@
 ﻿#include <stdio.h>
 #include <stdbool.h>
+#include <math.h>
 
 void NullElements()
 {
@@ -45,6 +46,22 @@ void Swap()
 }
 
 // ********
+int Division(const int a, const int b)
+{
+    int modulA = abs(a);
+    int modulB = abs(b);
+    int answer = 0;
+
+    while (modulA >= modulB) {
+        modulA -= modulB;
+        answer += 1;
+    }
+
+    if (((a < 0 && b > 0) || (a < 0 && b < 0)) && modulA == 0) {
+        answer -= 1;
+    }
+    return answer;
+}
 
 void IncompleteQuotient()
 {
@@ -62,39 +79,23 @@ void IncompleteQuotient()
 
     if (b != 0) {
         if (a >= 0 && b > 0) {
-            while (a >= b) {
-                a -= b;
-                answer += 1;
-            }
-        }
-        if (a < 0 && b > 0) {
-            answer -= 1;
-            while (a <= -b) {
-                a += b;
-                answer -= 1;
-            }
-            if (a == 0)
-                answer += 1;
+            answer = Division(a, b);
         }
         if (a > 0 && b < 0) {
-            while (a >= -b) {
-                a += b;
-                answer -= 1;
-            }
+            answer = -Division(a, b);
+        }
+        if (a < 0 && b > 0) {
+            answer = -Division(a, b);
+            answer -= 1;
         }
         if (a < 0 && b < 0) {
+            answer = Division(a, b);
             answer += 1;
-            while (a <= b) {
-                a -= b;
-                answer += 1;
-            }
-            if (a == 0)
-                answer -= 1;
         }
         printf("Answer: %d", answer);
-    }
-    else
+    } else {
         printf("%s\n", "You can't divide by zero!");
+    }
 }
 
 // ********
@@ -124,16 +125,9 @@ void LuckyTickets()
 
 // ********
 
-void BalanceOfBrackets()
+bool CheckingTheBalanceOfBrackets(const char string[])
 {
-    // Задача 5
-
-    char string[100];
     int balance = 0;
-    bool answer = 0;
-
-    printf("%s\n", "Enter a string with brackets:");
-    scanf("%s", string);
 
     for (int i = 0; i < 100; i++) {
         if (string[i] == '(') balance += 1;
@@ -142,15 +136,28 @@ void BalanceOfBrackets()
     }
 
     if (balance == 0) {
-        answer = 1;
+        return 1;
+    } else {
+        return 0;
     }
+}
+
+void BalanceOfBrackets()
+{
+    // Задача 5
+
+    char string[100];
+
+    printf("%s\n", "Enter a string with brackets:");
+    scanf("%s", string);
+
     printf("Result: %d \n1 - means the brackets balance is satisfied"
-           "\n0 - means it is not satisfied", answer);
+           "\n0 - means it is not satisfied", CheckingTheBalanceOfBrackets(string));
 }
 
 // ********
 
-int IsItPrime(int number)
+bool IsItPrime(int number)
 {
     int div = 2;
     while (div * div <= number) {
