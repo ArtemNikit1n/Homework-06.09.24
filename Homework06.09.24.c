@@ -186,13 +186,33 @@ void PrimeNumbers()
 
 // ********
 
+int CountingTheNumberOfOccurrences(const char s[], const char s1[])
+{
+    int occurrenceCounter = 0;
+
+    for (int i = 0; s[i] != '\0'; ++i) {
+        if (s[i] == s1[0]) {
+            bool symbolsAreEqual = 1;
+            for (int j = 0; s1[j] != '\0'; ++j) {
+                if (s[i + j] != s1[j]) {
+                    symbolsAreEqual = 0;
+                    break;
+                }
+            }
+            if (symbolsAreEqual == 1) {
+                ++occurrenceCounter;
+            }
+        }
+    }
+    return occurrenceCounter;
+}
+
 void Substring()
 {
     // Задача 7
 
     char s[100];
     char s1[100];
-    int occurrenceCounter = 0;
 
     printf("%s\n", "Enter S (<100):");
     scanf("%s", s);
@@ -200,26 +220,7 @@ void Substring()
     printf("%s\n", "Enter S1 (<100):");
     scanf("%s", s1);
 
-    int i = 0;
-    int j = 0;
-
-    while (s[i] != '\0') {
-        if (s[i] == s1[0]) {
-            bool symbolsAreEqual = 1;
-            while (s1[j] != '\0') {
-                if (s[i + j] != s1[j]) {
-                    symbolsAreEqual = 0;
-                    break;
-                }
-                ++j;
-            }
-            if (symbolsAreEqual) {
-                ++occurrenceCounter;
-            }
-        }
-        ++i;
-    }
-    printf("Number of occurrences of the substring: %d", occurrenceCounter);
+    printf("Number of occurrences of the substring: %d", CountingTheNumberOfOccurrences(s, s1));
 }
 
 // ********
