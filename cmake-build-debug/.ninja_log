@@ -1,7 +1,11 @@
 # ninja log v6
-1	286	7479665739483344	build.ninja	ebc491a9c7d2d53d
+1	230	7480019790166947	build.ninja	ebc491a9c7d2d53d
 5	57	7479652744980791	CMakeFiles/CLionProjects.dir/main.c.obj	81a0eac485bb834f
-58	159	7479652745510548	CLionProjects.exe	b39bb105209ed8
-8	102	7479647019309739	CMakeFiles/CLionProjects.dir/Homework06.09.24.c.obj	47c0e8d58e09365a
-1	230	7479665739483344	build.ninja	ebc491a9c7d2d53d
 5	97	7479665739742892	CLionProjects.exe	86a0aa079f69aaa9
+8	102	7479647019309739	CMakeFiles/CLionProjects.dir/Homework06.09.24.c.obj	47c0e8d58e09365a
+3	129	7480021334172126	CMakeFiles/CLionProjects.dir/Homework06.09.24.c.obj	47c0e8d58e09365a
+130	394	7480021335455526	CLionProjects.exe	86a0aa079f69aaa9
+3	90	7480022672328709	CMakeFiles/CLionProjects.dir/Homework06.09.24.c.obj	47c0e8d58e09365a
+90	177	7480022673207786	CLionProjects.exe	86a0aa079f69aaa9
+3	85	7480023140683380	CMakeFiles/CLionProjects.dir/Homework06.09.24.c.obj	47c0e8d58e09365a
+85	171	7480023141499884	CLionProjects.exe	86a0aa079f69aaa9

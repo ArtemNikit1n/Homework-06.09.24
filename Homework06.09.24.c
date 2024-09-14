@@ -31,18 +31,15 @@ void Swap()
     int first = 0;
     int second = 0;
 
-    int* left = &first;
-    int* right = &second;
-
     printf("%s\n", "Enter first number:");
     scanf("%d", &first);
 
     printf("%s\n", "Enter second number:");
     scanf("%d", &second);
 
-    *left ^= *right;
-    *right ^= *left;
-    *left ^= *right;
+    first ^= second;
+    second ^= first;
+    first ^= second;
 
     printf("First number: %d ; Second number: %d", first, second);
 }
