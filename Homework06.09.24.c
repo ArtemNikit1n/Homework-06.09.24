@@ -2,8 +2,7 @@
 #include <stdbool.h>
 #include <math.h>
 
-int ArrayInput(int arrayNumbers[100])
-{
+int ArrayInput(int arrayNumbers[100]) {
     int lengthArrayNumbers = 0;
 
     printf("%s\n", "Enter the array size (<= 100):");
@@ -16,8 +15,7 @@ int ArrayInput(int arrayNumbers[100])
     return lengthArrayNumbers;
 }
 
-void NullElements()
-{
+void NullElements() {
     // Задача 1
 
     int arrayNumbers[100];
@@ -35,15 +33,13 @@ void NullElements()
 
 // ********
 
-void Swap(int *first, int *second)
-{
+void Swap(int *first, int *second) {
     *first ^= *second;
     *second ^= *first;
     *first ^= *second;
 }
 
-void Task2Swap()
-{
+void Task2Swap() {
     // Задача 2
 
     int first = 0;
@@ -62,8 +58,7 @@ void Task2Swap()
 
 // ********
 
-int Division(const int a, const int b)
-{
+int Division(const int a, const int b) {
     int modulA = abs(a);
     int modulB = abs(b);
     int answer = 0;
@@ -79,8 +74,7 @@ int Division(const int a, const int b)
     return answer;
 }
 
-void IncompleteQuotient()
-{
+void IncompleteQuotient() {
     // Задача 3
 
     int a = 0;
@@ -116,8 +110,7 @@ void IncompleteQuotient()
 
 // ********
 
-void LuckyTickets()
-{
+void LuckyTickets() {
     // Задача 4
 
     int amounts[28] = {0};
@@ -141,8 +134,7 @@ void LuckyTickets()
 
 // ********
 
-bool CheckingTheBalanceOfBrackets(const char string[])
-{
+bool CheckingTheBalanceOfBrackets(const char string[]) {
     int balance = 0;
 
     for (int i = 0; i < 100; i++) {
@@ -158,8 +150,7 @@ bool CheckingTheBalanceOfBrackets(const char string[])
     }
 }
 
-void BalanceOfBrackets()
-{
+void BalanceOfBrackets() {
     // Задача 5
 
     char string[100];
@@ -173,8 +164,7 @@ void BalanceOfBrackets()
 
 // ********
 
-bool IsItPrime(int number)
-{
+bool IsItPrime(int number) {
     int div = 2;
     while (div * div <= number) {
         if (number % div == 0)
@@ -184,8 +174,7 @@ bool IsItPrime(int number)
     return 1;
 }
 
-void PrimeNumbers()
-{
+void PrimeNumbers() {
     // Задача 6
 
     int number = 0;
@@ -202,8 +191,7 @@ void PrimeNumbers()
 
 // ********
 
-int CountingTheNumberOfOccurrences(const char s[], const char s1[])
-{
+int CountingTheNumberOfOccurrences(const char s[], const char s1[]) {
     int occurrenceCounter = 0;
 
     for (int i = 0; s[i] != '\0'; ++i) {
@@ -223,8 +211,7 @@ int CountingTheNumberOfOccurrences(const char s[], const char s1[])
     return occurrenceCounter;
 }
 
-void Substring()
-{
+void Substring() {
     // Задача 7
 
     char s[100];
@@ -241,8 +228,7 @@ void Substring()
 
 // ********
 
-void ArrayReversal(int arrayNumbers[100], const int lengthArrayNumbers)
-{
+void ArrayReversal(int arrayNumbers[100], const int lengthArrayNumbers) {
     int middleOfTheArray = (int)(lengthArrayNumbers / 2);
 
     for (int i = 0; i <= middleOfTheArray - 1; ++i) {
@@ -250,8 +236,7 @@ void ArrayReversal(int arrayNumbers[100], const int lengthArrayNumbers)
     }
 }
 
-void Array()
-{
+void Array() {
     // Задача 8
 
     int arrayNumbers[100];
@@ -271,8 +256,8 @@ void Array()
 
 // ********
 
-int main(void)
-{
+int main(void) {
+
     int taskNumber = -1;
 
     printf("%s\n", "Enter task number:");
