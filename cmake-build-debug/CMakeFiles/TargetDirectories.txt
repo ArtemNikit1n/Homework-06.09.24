@@ -1,3 +1,0 @@
-D:/Development/Homeworks/Homework-06.09.24/cmake-build-debug/CMakeFiles/CLionProjects.dir
-D:/Development/Homeworks/Homework-06.09.24/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Development/Homeworks/Homework-06.09.24/cmake-build-debug/CMakeFiles/rebuild_cache.dir
