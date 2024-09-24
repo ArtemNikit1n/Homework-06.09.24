@@ -1,8 +1,8 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
 
-int ArrayInput(int arrayNumbers[100]) {
+int arrayInput(int arrayNumbers[100]) {
     int lengthArrayNumbers = 0;
 
     printf("%s\n", "Enter the array size (<= 100):");
@@ -15,12 +15,12 @@ int ArrayInput(int arrayNumbers[100]) {
     return lengthArrayNumbers;
 }
 
-void NullElements() {
+void nullElements() {
     // Задача 1
 
     int arrayNumbers[100];
     int nullCounter = 0;
-    int lengthArrayNumbers = ArrayInput(arrayNumbers);
+    int lengthArrayNumbers = arrayInput(arrayNumbers);
 
     for (int i = 0; i < lengthArrayNumbers; ++i) {
         printf("%d ", arrayNumbers[i]);
@@ -33,13 +33,16 @@ void NullElements() {
 
 // ********
 
-void Swap(int *first, int *second) {
+void swap(int *first, int *second) {
+    if (*first == *second) {
+        return;
+    }
     *first ^= *second;
     *second ^= *first;
     *first ^= *second;
 }
 
-void Task2Swap() {
+void task2Swap() {
     // Задача 2
 
     int first = 0;
@@ -51,14 +54,14 @@ void Task2Swap() {
     printf("%s\n", "Enter second number:");
     scanf("%d", &second);
 
-    Swap(&first, &second);
+    swap(&first, &second);
 
     printf("First number: %d ; Second number: %d", first, second);
 }
 
 // ********
 
-int Division(const int a, const int b) {
+int division(const int a, const int b) {
     int modulA = abs(a);
     int modulB = abs(b);
     int answer = 0;
@@ -74,7 +77,7 @@ int Division(const int a, const int b) {
     return answer;
 }
 
-void IncompleteQuotient() {
+void incompleteQuotient() {
     // Задача 3
 
     int a = 0;
@@ -89,17 +92,17 @@ void IncompleteQuotient() {
 
     if (b != 0) {
         if (a >= 0 && b > 0) {
-            answer = Division(a, b);
+            answer = division(a, b);
         }
         if (a > 0 && b < 0) {
-            answer = -Division(a, b);
+            answer = -division(a, b);
         }
         if (a < 0 && b > 0) {
-            answer = -Division(a, b);
+            answer = -division(a, b);
             answer -= 1;
         }
         if (a < 0 && b < 0) {
-            answer = Division(a, b);
+            answer = division(a, b);
             answer += 1;
         }
         printf("Answer: %d", answer);
@@ -110,7 +113,7 @@ void IncompleteQuotient() {
 
 // ********
 
-void LuckyTickets() {
+void luckyTickets() {
     // Задача 4
 
     int amounts[28] = {0};
@@ -134,23 +137,25 @@ void LuckyTickets() {
 
 // ********
 
-bool CheckingTheBalanceOfBrackets(const char string[]) {
+bool checkingTheBalanceOfBrackets(const char string[]) {
     int balance = 0;
-
-    for (int i = 0; i < 100; i++) {
-        if (string[i] == '(') balance += 1;
-        if (string[i] == ')') balance -= 1;
-        else continue;
+    int i = 0;
+    while (string[i] != '\0') {
+        if (balance < 0) {
+            return false;
+        }
+        if (string[i] == '(') {
+            balance += 1;
+        }
+        if (string[i] == ')') {
+            balance -= 1;
+        }
+        ++i;
     }
-
-    if (balance == 0) {
-        return 1;
-    } else {
-        return 0;
-    }
+    return balance == 0;
 }
 
-void BalanceOfBrackets() {
+void balanceOfBrackets() {
     // Задача 5
 
     char string[100];
@@ -159,12 +164,12 @@ void BalanceOfBrackets() {
     scanf("%s", string);
 
     printf("Result: %d \n1 - means the brackets balance is satisfied"
-           "\n0 - means it is not satisfied", CheckingTheBalanceOfBrackets(string));
+           "\n0 - means it is not satisfied", checkingTheBalanceOfBrackets(string));
 }
 
 // ********
 
-bool IsItPrime(int number) {
+bool isItPrime(int number) {
     int div = 2;
     while (div * div <= number) {
         if (number % div == 0)
@@ -174,7 +179,7 @@ bool IsItPrime(int number) {
     return 1;
 }
 
-void PrimeNumbers() {
+void primeNumbers() {
     // Задача 6
 
     int number = 0;
@@ -183,7 +188,7 @@ void PrimeNumbers() {
     scanf("%d", &number);
 
     for (int i = 2; i <= number; i++) {
-        if (IsItPrime(i)) {
+        if (isItPrime(i)) {
             printf("%d ", i);
         }
     }
@@ -191,7 +196,7 @@ void PrimeNumbers() {
 
 // ********
 
-int CountingTheNumberOfOccurrences(const char s[], const char s1[]) {
+int countingTheNumberOfOccurrences(const char s[], const char s1[]) {
     int occurrenceCounter = 0;
 
     for (int i = 0; s[i] != '\0'; ++i) {
@@ -211,7 +216,7 @@ int CountingTheNumberOfOccurrences(const char s[], const char s1[]) {
     return occurrenceCounter;
 }
 
-void Substring() {
+void substring() {
     // Задача 7
 
     char s[100];
@@ -223,32 +228,32 @@ void Substring() {
     printf("%s\n", "Enter S1 (<100):");
     scanf("%s", s1);
 
-    printf("Number of occurrences of the substring: %d", CountingTheNumberOfOccurrences(s, s1));
+    printf("Number of occurrences of the substring: %d", countingTheNumberOfOccurrences(s, s1));
 }
 
 // ********
 
-void ArrayReversal(int arrayNumbers[100], const int lengthArrayNumbers) {
+void arrayReversal(int arrayNumbers[100], const int lengthArrayNumbers) {
     int middleOfTheArray = (int)(lengthArrayNumbers / 2);
 
     for (int i = 0; i <= middleOfTheArray - 1; ++i) {
-        Swap(&arrayNumbers[i], &arrayNumbers[lengthArrayNumbers - 1 - i]);
+        swap(&arrayNumbers[i], &arrayNumbers[lengthArrayNumbers - 1 - i]);
     }
 }
 
-void Array() {
+void array() {
     // Задача 8
 
     int arrayNumbers[100];
     int separator = 0;
-    int lengthArrayNumbers = ArrayInput(arrayNumbers);
+    int lengthArrayNumbers = arrayInput(arrayNumbers);
 
     printf("%s\n", "Enter m:");
     scanf("%d", &separator);
 
-    ArrayReversal(arrayNumbers, separator);
-    ArrayReversal(arrayNumbers, lengthArrayNumbers);
-    ArrayReversal(arrayNumbers, lengthArrayNumbers - separator);
+    arrayReversal(arrayNumbers, separator);
+    arrayReversal(arrayNumbers, lengthArrayNumbers);
+    arrayReversal(arrayNumbers, lengthArrayNumbers - separator);
     for (int i = 0; i < lengthArrayNumbers; ++i) {
         printf("%d, ", arrayNumbers[i]);
     }
@@ -264,27 +269,27 @@ int main(void) {
     scanf("%d", &taskNumber);
 
     if (taskNumber == 1) {
-        NullElements();
+        nullElements();
     }
     if (taskNumber == 2) {
-        Task2Swap();
+        task2Swap();
     }
     if (taskNumber == 3) {
-        IncompleteQuotient();
+        incompleteQuotient();
     }
     if (taskNumber == 4) {
-        LuckyTickets();
+        luckyTickets();
     }
     if (taskNumber == 5) {
-        BalanceOfBrackets();
+        balanceOfBrackets();
     }
     if (taskNumber == 6) {
-        PrimeNumbers();
+        primeNumbers();
     }
     if (taskNumber == 7) {
-        Substring();
+        substring();
     }
     if (taskNumber == 8) {
-        Array();
+        array();
     }
 }
